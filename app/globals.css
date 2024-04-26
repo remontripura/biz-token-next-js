@@ -31,3 +31,52 @@ body {
     text-wrap: balance;
   }
 }
+
+
+.swiper-pagination,
+.swiper-button-next,
+.swiper-button-prev{
+  top: unset !important;
+  bottom: unset !important;
+  left: unset !important;
+  right: unset !important;
+  width:  auto !important;
+  position: unset !important;
+  margin: 0px !important;
+}
+
+.swiper-button-next::after{
+  content: '' !important;
+
+}
+.swiper-button-prev::after{
+  content:  '' !important;
+}
+
+
+.swiper-pagination-bullet {
+  background-color: white !important; 
+  border: 1px solid blue !important; 
+  width: 18px !important; 
+  height: 18px !important; 
+  border-radius: 50%;
+  position: relative !important;
+}
+
+.swiper-pagination-bullet-active {
+  background-color: #333333; 
+}
+
+.swiper-pagination-bullet::after{
+  content: '';
+  position: absolute !important;
+  width: 10px;
+  height: 10px;
+  background-color: blue;
+  right: 0px;
+  left: 0px;
+  bottom: 0px;
+  top: 0px;
+  margin: auto;
+  border-radius: 50%;
+}
