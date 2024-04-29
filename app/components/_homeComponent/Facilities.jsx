@@ -75,7 +75,7 @@ const Facilities = () => {
               <div className="flex-1 space-y-9 md:mt-0 mt-8">
                 {FacilitiesSecondData.map((data, i) => (
                   <div key={i} className="flex gap-3 items-start">
-                    <Image className="size-9" width={36} he src={handBack} alt="" />
+                    <Image width={50} height={50} className="" src={handBack} alt="" />
                     <p className="text-style2">{data}</p>
                   </div>
                 ))}

@@ -52,28 +52,76 @@ const BlockChainTrust = () => {
               className="md:p-0 swiper-size"
             >
               <SwiperSlide>
-                <Image className="w-[160px] col-span-3" src={akuna} alt="" />
+                <Image
+                  width={260}
+                  height={120}
+                  className=" col-span-3"
+                  src={akuna}
+                  alt=""
+                />
               </SwiperSlide>
               <SwiperSlide>
-                <Image className="w-[160px] col-span-3" src={binance} alt="" />
+                <Image
+                  width={260}
+                  height={120}
+                  className=" col-span-3"
+                  src={binance}
+                  alt=""
+                />
               </SwiperSlide>
               <SwiperSlide>
-                <Image className="w-[160px] col-span-3" src={cboe} alt="" />
+                <Image
+                  width={260}
+                  height={120}
+                  className=" col-span-3"
+                  src={cboe}
+                  alt=""
+                />
               </SwiperSlide>
               <SwiperSlide>
-                <Image className="w-[160px] col-span-3" src={jane} alt="" />
+                <Image
+                  width={260}
+                  height={120}
+                  className=" col-span-3"
+                  src={jane}
+                  alt=""
+                />
               </SwiperSlide>
               <SwiperSlide>
-                <Image className="w-[160px] col-span-3" src={okx} alt="" />
+                <Image
+                  width={260}
+                  height={120}
+                  className=" col-span-3"
+                  src={okx}
+                  alt=""
+                />
               </SwiperSlide>
               <SwiperSlide>
-                <Image className="w-[160px] col-span-3" src={optiver} alt="" />
+                <Image
+                  width={260}
+                  height={120}
+                  className=" col-span-3"
+                  src={optiver}
+                  alt=""
+                />
               </SwiperSlide>
               <SwiperSlide>
-                <Image className="w-[160px] col-span-3" src={twosigma} alt="" />
+                <Image
+                  width={260}
+                  height={120}
+                  className=" col-span-3"
+                  src={twosigma}
+                  alt=""
+                />
               </SwiperSlide>
               <SwiperSlide>
-                <Image className="w-[160px] col-span-3" src={wintermute} alt="" />
+                <Image
+                  width={260}
+                  height={120}
+                  className=" col-span-3"
+                  src={wintermute}
+                  alt=""
+                />
               </SwiperSlide>
             </Swiper>
           </div>

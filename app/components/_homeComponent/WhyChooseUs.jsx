@@ -50,6 +50,7 @@ const WhyChooseUs = () => {
                 }}
               >
                 <Image
+                width={500} height={500}
                   className="w-full h-[400px] rounded-t-2xl"
                   src={data.img}
                   alt=""

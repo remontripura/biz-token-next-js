@@ -1,5 +1,5 @@
 import Container from "@/app/_container/Container";
-import bizToken from "../../../public/icon/logo.png";
+import bizToken from "@/public/icon/logo.png";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -9,7 +9,7 @@ const Footer = () => {
       <Container>
         <div className="grid grid-cols-12 md:gap-5 mb-[150px] gap-5 px-5 lg:px-0">
           <div className="lg:col-span-3 col-span-6">
-            <Image className="w-[75%]" src={bizToken} alt="" />
+            <Image width={50} height={50} className="w-[75%]" src={bizToken} alt="" />
           </div>
           <div className="lg:col-span-3 col-span-6 lg:flex justify-center">
             <div>

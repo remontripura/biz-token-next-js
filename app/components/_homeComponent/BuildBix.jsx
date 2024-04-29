@@ -32,6 +32,8 @@ const BuildBiz = () => {
           </div>
           <div>
             <Image
+               width={500}
+               height={500}
               className="w-full object-contain"
               src={developmentImage}
               alt=""

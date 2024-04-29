@@ -1,7 +1,8 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import icon from "../../../public/icon/logo.png";
+// import icon from "../../../public/icon/logo.png";
+import icon from "@/public/icon/logo.png"
 import { IoMdMenu, IoIosClose } from "react-icons/io";
 import Container from "@/app/_container/Container";
 import Link from "next/link";
@@ -13,11 +14,17 @@ const NavItem1 = (
       Home
     </Link>
 
-    <Link href="/" className="text-[#000] font-medium  hover:text-[#FFFFFF]">
+    <Link
+      href="/pages/bloogs"
+      className="text-[#000] font-medium  hover:text-[#FFFFFF]"
+    >
       Blog
     </Link>
 
-    <Link href="/pages/freebiz" className="text-[#000] font-medium  hover:text-[#FFFFFF]">
+    <Link
+      href="/pages/freebiz"
+      className="text-[#000] font-medium  hover:text-[#FFFFFF]"
+    >
       Free Biz
     </Link>
   </>
@@ -62,9 +69,9 @@ const Navbar = ({ scroll, setScroll }) => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  useEffect(() => {
-    setMenu(false);
-  }, [location.pathname]);
+  // useEffect(() => {
+  //   setMenu(false);
+  // }, [location.pathname]);
   return (
     <div
       className={`${

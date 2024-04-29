@@ -80,6 +80,7 @@ const HeroSection = () => {
           <div className="col-span-5 absolute right-0 lg:bottom-[150px] lg:-top-44 -top-44 -z-10" >
           <Image
           style={{width: '100%'}}
+          width={500} height={500}
               src={hero}
               alt="Picture of the author"
             />

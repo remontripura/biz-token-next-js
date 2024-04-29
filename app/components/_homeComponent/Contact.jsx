@@ -47,21 +47,20 @@ const Contact = () => {
             </h3>
             <div className="flex gap-5 mt-8">
               <Link href="/" className="md:md:p-2 md:bg-[#D6E7FF] rounded-full">
-                <Image width={44} height={44} src={email} alt="" />
+                <Image width={40} height={40} src={email} alt="" />
               </Link>
               <Link href="/" className="md:md:p-2 md:bg-[#D6E7FF] rounded-full">
-                <Image width={44} height={44} src={facebook} alt="" />
+                <Image width={40} height={40} src={facebook} alt="" />
               </Link>
               <Link href="/" className="md:md:p-2 md:bg-[#D6E7FF] rounded-full">
-                <Image width={44} height={44} src={twitter} alt="" />
+                <Image width={40} height={40} src={twitter} alt="" />
               </Link>
               <Link href="/" className="md:md:p-2 md:bg-[#D6E7FF] rounded-full">
-                <Image width={44} height={44} src={linkedin} alt="" />
+                <Image width={40} height={40} src={linkedin} alt="" />
               </Link>
               <Link href="/" className="md:md:p-2 md:bg-[#D6E7FF] rounded-full">
-                <Image width={44} height={44} src={youtube} alt="" />
+                <Image width={40} height={40} src={youtube} alt="" />
               </Link>
-              
             </div>
           </div>
         </div>
