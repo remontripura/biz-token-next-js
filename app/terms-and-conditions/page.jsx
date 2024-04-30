@@ -1,7 +1,7 @@
-import Navbar from '@/app/components/shared/_navbar/Navbar';
+import Navbar from '@/app/components/shared/_navbar/navbar';
 import Footer from '@/app/components/shared/footer/Footer';
 import React from 'react';
-import HomeLayout from '../(homeLayout)/layout';
+import HomeLayout from '../(dashboardLayout)/layout';
 
 const TermsAndConditions = () => {
   return (

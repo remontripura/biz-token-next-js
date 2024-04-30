@@ -5,7 +5,8 @@ const AllBlog = async () => {
     const response = await axios.get(
       "https://biz-server-git-main-remontripuras-projects.vercel.app/news"
     );
-    return response.data;
+    console.log(response);
+    return response?.data;
   } catch (error) {
     throw error;
   }
