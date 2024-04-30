@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 // import icon from "../../../public/icon/logo.png";
-import icon from "@/public/icon/logo.png"
+import icon from "@/public/icon/logo.png";
 import { IoMdMenu, IoIosClose } from "react-icons/io";
 import Container from "@/app/_container/Container";
 import Link from "next/link";
@@ -74,11 +74,10 @@ const Navbar = ({ scroll, setScroll }) => {
   // }, [location.pathname]);
   return (
     <div
-      className={`${
-        isScrolled == true
-          ? "bg-[#2F76DE] duration-500 py-2"
-          : "transition-all duration-500 py-3 bg-[#2F76DE]"
-      } w-full z-[99] fixed`}
+      className={`${isScrolled == true
+        ? "bg-[#2F76DE] duration-500 py-2"
+        : "transition-all duration-500 py-3 bg-[#2F76DE]"
+        } w-full z-[99] fixed`}
     >
       <Container>
         <div className="px-3 flex items-center justify-between relative ">
@@ -91,11 +90,10 @@ const Navbar = ({ scroll, setScroll }) => {
             />
           </Link>
           <div
-            className={`flex flex-col items-center gap-5 bg-[#fff] absolute  right-0 left-0 md:hidden ${
-              menu
-                ? "top-12 py-8 transition-all  duration-300 ease-in "
-                : "-top-96  transition-all duration-300 ease-in"
-            }`}
+            className={`flex flex-col items-center gap-5 bg-[#fff] absolute  right-0 left-0 md:hidden ${menu
+              ? "top-12 py-8 transition-all  duration-300 ease-in "
+              : "-top-96  transition-all duration-300 ease-in"
+              }`}
           >
             <div className="w-full flex justify-end">
               <button

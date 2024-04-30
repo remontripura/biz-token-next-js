@@ -1,14 +1,14 @@
-import Navbar from '@/app/components/shared/_navbar/Navbar';
+import Navbar from '@/app/components/shared/_navbar/navbar';
 import Footer from '@/app/components/shared/footer/Footer';
 import React from 'react';
+import HomeLayout from '../(dashboardLayout)/layout';
 
 const TermsAndConditions = () => {
   return (
-    <>
-      <Navbar />
+    <HomeLayout>
       <div className='container mx-auto pb-6 px-5'>
-        <h2 className='font-semibold pt-20 text-2xl'>Terms & Conditions</h2>
 
+        <h2 className='font-semibold pt-20 text-2xl'>Terms & Conditions</h2>
         <div className='flex flex-col gap-2'>
           <p>Welcome to Biz Token Mining. By accessing or using our mining application, you agree to comply with the following terms and conditions:</p>
 
@@ -26,19 +26,15 @@ const TermsAndConditions = () => {
 
             <li><span className='font-semibold'> Monthly Conversion Limit:</span> Users are allowed to convert Governess Coin to Native Coin once per month.</li>
 
-            <li><span className='font-semibold'> Staking: </span>Staking is only available for the Native Coin (BIZT) within the mining application.
-
-              By using the Biz Token Mining application, you acknowledge and agree to abide by these terms and conditions. Failure to comply with these terms may result in the suspension or termination of your account.
-
-              Please note that these terms and conditions are subject to change at any time without prior notice. It is your responsibility to review and familiarize yourself with the latest version of the terms and conditions.
-
-              If you have any questions or concerns regarding these terms and conditions, please contact our support team for assistance.
-            </li>
+            <li><span className='font-semibold'> Staking: </span>Staking is only available for the Native Coin (BIZT) within the mining application.</li>
           </ul>
+          <p>By using the Biz Token Mining application, you acknowledge and agree to abide by these terms and conditions. Failure to comply with these terms may result in the suspension or termination of your account.
+            Please note that these terms and conditions are subject to change at any time without prior notice. It is your responsibility to review and familiarize yourself with the latest version of the terms and conditions.</p>
+          <p> If you have any questions or concerns regarding these terms and conditions, please contact our support team for assistance.</p>
         </div>
       </div>
-      <Footer />
-    </>
+    </HomeLayout>
+
   );
 };
 
