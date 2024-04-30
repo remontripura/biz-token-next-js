@@ -1,12 +1,12 @@
 import React from 'react';
 import Footer from '../components/shared/footer/Footer';
-import Navbar from '../components/shared/_navbar/navbar';
+import Navbar from '../components/shared/navbar/Navbar';
 import AdminSidebar from '../components/shared/admin/AdminSideBar';
 
 const DashboardLayout = ({ children }) => {
   return (
-    <div >
-      <div className=''>
+    <html lang='en'>
+      <body>
         <div>
           sidebar
         </div>
@@ -16,8 +16,8 @@ const DashboardLayout = ({ children }) => {
         <div>
           footer
         </div>
-      </div>
-    </div>
+      </body>
+    </html>
   );
 };
 
