@@ -1,5 +1,3 @@
-
-
 "use client";
 
 import { useEffect, useState } from "react";
@@ -14,7 +12,8 @@ import axios from "axios";
 const Page = () => {
   const [firstValue, setFirstValue] = useState(() => EditorState.createEmpty());
   const api_key = "d9fbec5bc5650a087316215838a6a574";
-  const [category, setCategory] = useState([]);
+  const [categoryy, setCategory] = useState([]);
+
 
   const { register, handleSubmit, reset } = useForm();
   const onSubmit = async (data) => {
@@ -22,6 +21,7 @@ const Page = () => {
     const content = draftToHtml(convertToRaw(firstValue.getCurrentContent()));
     const title = data.title;
     const category = data.category;
+    console.log(category);
     const formData = new FormData();
     formData.append("image", data.imageUrl[0]);
 
@@ -36,7 +36,6 @@ const Page = () => {
       throw new Error("Failed to upload image to imgBB");
     }
     const imgBBData = await imgBBResponse.json();
-    console.log(imgBBData);
     const deleteApi = imgBBData.data.delete_url;
     const imageUrl = imgBBData.data.url;
     try {
@@ -76,7 +75,7 @@ const Page = () => {
         "https://biz-server-git-main-remontripuras-projects.vercel.app/category"
       )
       .then((response) => {
-        console.log(response.data);
+        setCategory(response.data);
       })
       .catch((error) => {
         console.error("Error fetching data:", error);
@@ -119,7 +118,7 @@ const Page = () => {
             className="w-1/2  px-2 py-2  rounded border border-slate-300  focus:outline focus:outline-slate-400"
           >
             {" "}
-            {category?.map((category) => (
+            {categoryy?.map((category) => (
               <option key={category._id} defaultValue={category.categoryName}>
                 {category.categoryName}
               </option>
