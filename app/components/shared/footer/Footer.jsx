@@ -52,7 +52,7 @@ const Footer = () => {
               <ul className="flex flex-col gap-[10px] mt-3">
                 <li>
                   <Link
-                    href="/"
+                    href="/terms-and-conditions"
                     className="text-[#fff] text-[16px] font-medium"
                   >
                     Terms & Conditions
