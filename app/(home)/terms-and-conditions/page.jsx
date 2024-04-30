@@ -1,11 +1,11 @@
-import Navbar from '@/app/components/shared/_navbar/navbar';
+import Navbar from '@/app/components/shared/navbar/Navbar';
 import Footer from '@/app/components/shared/footer/Footer';
 import React from 'react';
-import HomeLayout from '../(dashboardLayout)/layout';
+import HomeLayout from '../../(dashboardLayout)/layout';
 
 const TermsAndConditions = () => {
   return (
-    <HomeLayout>
+    <>
       <div className='container mx-auto pb-6 px-5'>
 
         <h2 className='font-semibold pt-20 text-2xl'>Terms & Conditions</h2>
@@ -33,7 +33,7 @@ const TermsAndConditions = () => {
           <p> If you have any questions or concerns regarding these terms and conditions, please contact our support team for assistance.</p>
         </div>
       </div>
-    </HomeLayout>
+    </>
 
   );
 };

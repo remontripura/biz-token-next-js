@@ -13,61 +13,59 @@ const NavItem1 = (
     <Link href="/" className="text-[#000] font-medium  hover:text-[#FFFFFF]">
       Home
     </Link>
-
     <Link
-      href="/pages/bloogs"
+      href="/blogs"
       className="text-[#000] font-medium  hover:text-[#FFFFFF]"
     >
       Blog
     </Link>
-
     <Link
-      href="/pages/freebiz"
+      href="/free-biz"
       className="text-[#000] font-medium  hover:text-[#FFFFFF]"
     >
       Free Biz
     </Link>
   </>
 );
-const NavItem2 = (
-  <>
-    <Link to="/" className="text-[#000] hover:text-blue-600 ">
-      Home
-    </Link>
-    <Link to="/Developers" className="text-[#000] hover:text-blue-600 ">
-      Developers
-    </Link>
-    <Link to="/ecosystem" className="text-[#000] hover:text-blue-600 ">
-      Ecosystem
-    </Link>
-    <Link to="/commiunity" className="text-[#000] hover:text-blue-600 ">
-      Community
-    </Link>
-    <Link to="/blog" className="text-[#000] hover:text-blue-600 ">
-      Blog
-    </Link>
-    <Link to="/free-biz-home" className="text-[#000] hover:text-blue-600 ">
-      Free-Biz
-    </Link>
-  </>
-);
+// const NavItem2 = (
+//   <>
+//     <Link href="/" className="text-[#000] hover:text-blue-600 ">
+//       Home
+//     </Link>
+//     <Link href="/Developers" className="text-[#000] hover:text-blue-600 ">
+//       Developers
+//     </Link>
+//     <Link href="/ecosystem" className="text-[#000] hover:text-blue-600 ">
+//       Ecosystem
+//     </Link>
+//     <Link href="/commiunity" className="text-[#000] hover:text-blue-600 ">
+//       Community
+//     </Link>
+//     <Link href="/blog" className="text-[#000] hover:text-blue-600 ">
+//       Blog
+//     </Link>
+//     <Link href="/free-biz-home" className="text-[#000] hover:text-blue-600 ">
+//       Free-Biz
+//     </Link>
+//   </>
+// );
 
 const Navbar = ({ scroll, setScroll }) => {
   const [menu, setMenu] = useState(false);
-  useEffect(() => window.scrollTo(0, 10));
+  // useEffect(() => window.scrollTo(0, 10));
   const handleToggleMenu = () => {
     setMenu(!menu);
     // setScroll(!scroll);
   };
   const [isScrolled, setIsScrolled] = useState(false);
 
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 30);
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  // useEffect(() => {
+  //   const handleScroll = () => {
+  //     setIsScrolled(window.scrollY > 30);
+  //   };
+  //   window.addEventListener("scroll", handleScroll);
+  //   return () => window.removeEventListener("scroll", handleScroll);
+  // }, []);
 
   // useEffect(() => {
   //   setMenu(false);

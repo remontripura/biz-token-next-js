@@ -9,7 +9,7 @@ import BuildBiz from "@/app/components/_homeComponent/BuildBix";
 import LatestBlog from "@/app/components/_homeComponent/LatestBlog";
 import Contact from "@/app/components/_homeComponent/Contact";
 
-const Index = () => {
+const HomepageContent = () => {
   return (
     <div>
       <HeroSection />
@@ -24,4 +24,4 @@ const Index = () => {
   );
 };
 
-export default Index;
+export default HomepageContent;
