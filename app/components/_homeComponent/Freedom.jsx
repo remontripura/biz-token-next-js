@@ -64,7 +64,7 @@ const Freedom = () => {
               >
                 <div className="">
                   <div className="size-[70px] bg-[#2F77E0] p-2 rounded-full mt-1 flex justify-center items-center">
-                    <Image width={50} height={50} className="size-[44px]" src={data.img} alt="" />
+                    <Image className="size-[44px]" src={data.img} alt="" />
                   </div>
                 </div>
                 <div className="flex flex-col">
