@@ -222,25 +222,49 @@ import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import draftToHtml from "draftjs-to-html";
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
+import Editors from "@/app/components/_editor/Editor";
 
 const Page = ({ params }) => {
-  console.log(params);
-
+  console.log(params.id);
   const [blogData, setblogData] = useState([]);
   const { _id, title, content } = blogData;
-  console.log(title);
   const [category, setCategory] = useState([]);
-  console.log(category);
+
+
+
+  const [initialData, setInitialData] = useState(' ');
+  const blocksFromHTML = convertFromHTML(initialData);
+
+  const contentState = ContentState.createFromBlockArray(
+    blocksFromHTML.contentBlocks,
+    blocksFromHTML.entityMap
+  );
+
+  const [firstValue, setFirstValue] = useState(() =>
+    EditorState.createWithContent(contentState)
+  );
+
+
 
   useEffect(() => {
-    axios
-      .get("https://biz-server-git-main-remontripuras-projects.vercel.app/news")
-      .then(
-        (response) => console.log(response)
-        // setblogData(response?.data?.find((item) => item._id === params._id))
-      )
-      .catch((error) => console.log(error));
-  }, []);
+    fetch('https://biz-server-git-main-remontripuras-projects.vercel.app/news')
+      .then(res => res.json())
+      .then(data => {
+        const blogData = data.find(item => item._id === params?.id);
+        setInitialData(blogData?.content || ''); // Assuming 'content' is the key containing HTML content
+      });
+  }, [params?.id]); // Fetch data when params.id changes
+
+  useEffect(() => {
+    if (initialData) {
+      const blocksFromHTML = convertFromHTML(initialData);
+      const contentState = ContentState.createFromBlockArray(
+        blocksFromHTML.contentBlocks,
+        blocksFromHTML.entityMap
+      );
+      setFirstValue(EditorState.createWithContent(contentState));
+    }
+  }, [initialData]);
 
   useEffect(() => {
     axios
@@ -251,15 +275,7 @@ const Page = ({ params }) => {
       .catch((error) => console.log(error));
   }, []);
 
-  const initialContent = content;
-  const blocksFromHTML = convertFromHTML(initialContent);
-  const contentState = ContentState.createFromBlockArray(
-    blocksFromHTML.contentBlocks,
-    blocksFromHTML.entityMap
-  );
-  const [firstValue, setFirstValue] = useState(() =>
-    EditorState.createWithContent(contentState)
-  );
+
   const { register, handleSubmit } = useForm();
   const api_key = "d9fbec5bc5650a087316215838a6a574";
 
@@ -310,6 +326,9 @@ const Page = ({ params }) => {
       console.error("Error saving content:", error);
     }
   };
+
+
+
 
   return (
     <div className="my-20 mx-2 overflow-y-auto ">

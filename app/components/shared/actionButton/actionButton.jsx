@@ -32,7 +32,7 @@ const ActionButton = ({ data }) => {
   };
   return (
     <div>
-      <Link href={`/edit-post/${data._id}`}>
+      <Link href={`/allblogs/edit/${data._id}`}>
         <button>
           <svg
             xmlns="http://www.w3.org/2000/svg"
