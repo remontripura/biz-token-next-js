@@ -1,225 +1,75 @@
-"use client";
-
-import React, { useEffect, useState } from "react";
-import Lottie from "react-lottie-player";
-import axios from "axios";
-import Container from "@/app/_container/Container";
-import lottieJson from "../../../public/json/loading.json";
+import ActionButton from "@/app/components/shared/actionButton/actionButton";
+import AllBlog from "@/lib/allBlog";
+import AllCategory from "@/lib/allCategory";
 import Image from "next/image";
-import Link from "next/link";
 
-const Bloogs = () => {
-  const [currentPage, setCurrentPage] = useState(1);
-  const [itemsPerPage] = useState(6);
-
-  const [data, setData] = useState();
-  const [loading, setLoading] = useState(true);
-  useEffect(() => {
-    axios
-      .get(`https:biz-server-git-main-remontripuras-projects.vercel.app/news`)
-      .then((response) => {
-        setData(response.data);
-        setLoading(false);
-      })
-      .catch((error) => {
-        console.error("Error fetching data:", error);
-        setLoading(false);
-      });
-  }, []);
-
-  const reversedData = data && Array.isArray(data) ? [...data].reverse() : [];
-  if (loading) {
-    return (
-      <div className=" flex justify-center items-center">
-        <Lottie
-          loop
-          animationData={lottieJson}
-          play
-          style={{ width: 300, height: 300 }}
-        />
-      </div>
-    );
-  }
-  const indexOfLastItem = currentPage * itemsPerPage;
-  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-  const currentItems = data.slice(indexOfFirstItem, indexOfLastItem);
-
-  const paginate = (pageNumber) => setCurrentPage(pageNumber);
-
-  const handleNextPage = () => {
-    setCurrentPage((prevPage) => prevPage + 1);
-  };
-
-  const handlePrevPage = () => {
-    setCurrentPage((prevPage) => prevPage - 1);
-  };
+const allblogs = async () => {
+  const allBlogs = await AllBlog();
+  const allCategory = await AllCategory();
 
   return (
-    <div className="bg-[#e3f3ff] md:pb-[80px] md:pt-[150px] pt-[100px] pb-5 ">
-      <Container>
-        <div className="text-center md:mb-[80px] mb-10">
-          <h3 className="md:text-[64px] text-[44px] font-bold text-[#323232]">
-            Blog
+    <div className="relative mx-2 h-[80vh]">
+      <div className="grid grid-cols-12 gap-3">
+        <div className="h-24 border col-span-4 flex flex-col justify-center items-center shadow rounded">
+          <h3 className="text-[#656565] text-[20px] font-semibold">
+            Total Blog
           </h3>
-          <p>
-            <span className="font-semibole text-[18px] font-bold">Home</span>
-            {location.pathname}
-          </p>
+          <h3 className="text-[28px] font-semibold">{`${
+            allBlogs.length < 10 ? 0 : ""
+          }${allBlogs.length}`}</h3>
         </div>
-        <div className="grid grid-cols-12 gap-5 md:mx-0 mx-2">
-          {currentItems?.map((dataItem, i) => (
-            <Link
-              href={`/pages/news/${dataItem._id}`}
-              key={i}
-              className="md:col-span-4 col-span-6 duration-300"
-            >
-              <div className="h-full  border border-blue-800 relative">
-                <div>
-                  <Image
-                    style={{
-                      width: "100%",
-                      height: "350px",
-                      borderRadius: "10px",
-                      objectFit: "cover",
-                    }}
-                    width={300}
-                    height={300}
-                    src={dataItem?.imageUrl}
-                    alt="Picture of the author"
-                  />
-                </div>
-                <div className="p-2">
-                  <h3 className="text-[18px] font-bold ">
-                    {dataItem.title.slice(0, 30) + "..."}
-                  </h3>
-                  <div
-                    className="mb-12"
-                    dangerouslySetInnerHTML={{
-                      __html: dataItem?.content
-                        ? dataItem.content
-                          .replace(/(<([^>]+)>)/gi, "")
-                          .split(" ")
-                          .slice(0, 20)
-                          .join(" ")
-                        : "",
-                    }}
-                  ></div>
-                  <button className="px-4 py-2 bg-blue-800 rounded text-white mt-3 absolute bottom-2">
-                    Read More
-                  </button>
-                </div>
-              </div>
-            </Link>
+        <div className="h-24 border col-span-4 flex flex-col justify-center items-center shadow rounded">
+          <h3 className="text-[#656565] text-[20px] font-semibold">
+            Total Category
+          </h3>
+          <h3 className="text-[28px] font-semibold">{`${
+            allCategory?.length < 10 ? 0 : ""
+          }${allCategory?.length}`}</h3>
+        </div>
+        <div className="h-24 border col-span-4 flex flex-col justify-center items-center shadow rounded">
+          <h3 className="text-[#656565] text-[20px] font-semibold">
+            Total User
+          </h3>
+          <h3 className="text-[28px] font-semibold">24</h3>
+        </div>
+      </div>
+      <table className=" w-full border rounded-full mt-3">
+        <thead className="border-b-2 bg-slate-300">
+          <tr className="p-2">
+            <th className="text-start p-2">No</th>
+            <th className="text-start p-2">Image</th>
+            <th className="text-start p-2">title</th>
+            <th className="text-center p-2">Action</th>
+          </tr>
+        </thead>
+        <tbody className="">
+          {allBlogs?.map((data, i) => (
+            <tr key={i} className="border-b-2 px-2 space-x-5">
+              <td className=" text-start w-1/12 p-2">{i + 1}</td>
+              <td className=" text-start w-2/12 p-2">
+                <Image
+                  width={100}
+                  height={100}
+                  className="size-14 rounded-full"
+                  src={data?.imageUrl}
+                  alt=""
+                />
+              </td>
+              <td className=" text-start w-4/12 p-2">
+                {" "}
+                {`${data?.title?.slice(0, 20)}${
+                  data?.title?.length > 20 ? "..." : ""
+                }`}
+              </td>
+              <td className=" text-center w-3/12 space-x-3 p-2">
+                <ActionButton data={data} />
+              </td>
+            </tr>
           ))}
-        </div>
-        {/* Pagination */}
-        <div className="flex justify-center mt-4">
-          <button
-            className="mx-1 px-3 py-1 bg-gray-200"
-            onClick={handlePrevPage}
-            disabled={currentPage === 1}
-          >
-            Previous
-          </button>
-          {[...Array(Math.ceil(data.length / itemsPerPage)).keys()].map(
-            (pageNumber) => (
-              <button
-                key={pageNumber}
-                className={`mx-1 px-3 py-1 ${currentPage === pageNumber + 1
-                    ? "bg-blue-500 text-white"
-                    : "bg-gray-200"
-                  }`}
-                onClick={() => paginate(pageNumber + 1)}
-              >
-                {pageNumber + 1}
-              </button>
-            )
-          )}
-          <button
-            className="mx-1 px-3 py-1 bg-gray-200"
-            onClick={handleNextPage}
-            disabled={currentPage === Math.ceil(data.length / itemsPerPage)}
-          >
-            Next
-          </button>
-        </div>
-      </Container>
+        </tbody>
+      </table>
     </div>
   );
 };
 
-export default Bloogs;
-
-// import Container from "@/app/_container/Container";
-// import Pagination from "@/app/components/shared/paignation/Pagination";
-// import AllBlog from "@/lib/allBlog";
-// import Image from "next/image";
-// import Link from "next/link";
-
-// const Bloogs = async () => {
-//   const blogData = await AllBlog();
-//   return (
-//     <div className="bg-[#e3f3ff] md:pb-[80px] md:pt-[150px] pt-[100px] pb-5 ">
-//       <Container>
-//         <div className="text-center md:mb-[80px] mb-10">
-//           <h3 className="md:text-[64px] text-[44px] font-bold text-[#323232]">
-//             Blog
-//           </h3>
-//           <p>
-//             <span className="font-semibole text-[18px] font-bold">Home</span>
-//             {/* {location.pathname} */}
-//           </p>
-//         </div>
-//         <div className="grid grid-cols-12 gap-5 md:mx-0 mx-2">
-//           {blogData?.map((dataItem, i) => (
-//             <Link
-//               href={`/pages/news/${dataItem._id}`}
-//               key={i}
-//               className="md:col-span-4 col-span-6 duration-300"
-//             >
-//               <div className="h-full  border border-blue-800 relative">
-//                 <div>
-//                   <Image
-//                     style={{
-//                       width: "100%",
-//                       height: "350px",
-//                       borderRadius: "10px",
-//                       objectFit: "cover",
-//                     }}
-//                     width={300}
-//                     height={300}
-//                     src={dataItem?.imageUrl}
-//                     alt="Picture of the author"
-//                   />
-//                 </div>
-//                 <div className="p-2">
-//                   <h3 className="text-[18px] font-bold ">
-//                     {dataItem.title.slice(0, 30) + "..."}
-//                   </h3>
-//                   <div
-//                     className="mb-12"
-//                     dangerouslySetInnerHTML={{
-//                       __html: dataItem?.content
-//                         ? dataItem.content
-//                             .replace(/(<([^>]+)>)/gi, "")
-//                             .split(" ")
-//                             .slice(0, 20)
-//                             .join(" ")
-//                         : "",
-//                     }}
-//                   ></div>
-//                   <button className="px-4 py-2 bg-blue-800 rounded text-white mt-3 absolute bottom-2">
-//                     Read More
-//                   </button>
-//                 </div>
-//               </div>
-//             </Link>
-//           ))}
-//         </div>
-//         <Pagination blogData={blogData} />
-//       </Container>
-//     </div>
-//   );
-// };
-
-// export default Bloogs;
+export default allblogs;
