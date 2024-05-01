@@ -5,7 +5,6 @@ const Blogs = () => {
   return (
     <div className='py-20'>
       <Bloogs />
-
     </div>
   );
 };
