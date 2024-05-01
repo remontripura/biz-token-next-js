@@ -126,7 +126,7 @@ const Navbar = ({ scroll, setScroll }) => {
           </div>
           <div className="md:block hidden">
             <div className=" flex justify-center">
-              <Link href="/dashboard/dashboard-home">
+              <Link href="/dashboard">
                 <button className="text-[#303030] py-3 px-8 bg-[#F3FAFF] rounded-lg">
                   Start Building
                 </button>

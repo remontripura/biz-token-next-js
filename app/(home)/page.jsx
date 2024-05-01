@@ -10,17 +10,16 @@ import BlockChainTrust from "../components/_homeComponent/BlockChainYouCanTrust"
 
 export default function Home() {
   return (
-    <>
-      <div>
-        <HeroSection />
-        <BlockChainTrust />
-        <Freedom />
-        <WhyChooseUs />
-        <Facilities />
-        <BuildBiz />
-        <LatestBlog />
-        <Contact />
-      </div>
-    </>
+    <div>
+      <HeroSection />
+      <BlockChainTrust />
+      <Freedom />
+      <WhyChooseUs />
+      <Facilities />
+      <BuildBiz />
+      <LatestBlog />
+      <Contact />
+    </div>
+
   );
 }
