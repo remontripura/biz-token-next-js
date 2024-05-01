@@ -14,17 +14,15 @@ const allblogs = async () => {
           <h3 className="text-[#656565] text-[20px] font-semibold">
             Total Blog
           </h3>
-          <h3 className="text-[28px] font-semibold">{`${
-            allBlogs.length < 10 ? 0 : ""
-          }${allBlogs.length}`}</h3>
+          <h3 className="text-[28px] font-semibold">{`${allBlogs?.length < 10 ? 0 : ""
+            }${allBlogs?.length}`}</h3>
         </div>
         <div className="h-24 border col-span-4 flex flex-col justify-center items-center shadow rounded">
           <h3 className="text-[#656565] text-[20px] font-semibold">
             Total Category
           </h3>
-          <h3 className="text-[28px] font-semibold">{`${
-            allCategory?.length < 10 ? 0 : ""
-          }${allCategory?.length}`}</h3>
+          <h3 className="text-[28px] font-semibold">{`${allCategory?.length < 10 ? 0 : ""
+            }${allCategory?.length}`}</h3>
         </div>
         <div className="h-24 border col-span-4 flex flex-col justify-center items-center shadow rounded">
           <h3 className="text-[#656565] text-[20px] font-semibold">
@@ -57,9 +55,8 @@ const allblogs = async () => {
               </td>
               <td className=" text-start w-4/12 p-2">
                 {" "}
-                {`${data?.title?.slice(0, 20)}${
-                  data?.title?.length > 20 ? "..." : ""
-                }`}
+                {`${data?.title?.slice(0, 20)}${data?.title?.length > 20 ? "..." : ""
+                  }`}
               </td>
               <td className=" text-center w-3/12 space-x-3 p-2">
                 <ActionButton data={data} />

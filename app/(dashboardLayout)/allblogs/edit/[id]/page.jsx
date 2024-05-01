@@ -245,7 +245,6 @@ const Page = ({ params }) => {
   );
 
 
-
   useEffect(() => {
     fetch('https://biz-server-git-main-remontripuras-projects.vercel.app/news')
       .then(res => res.json())
