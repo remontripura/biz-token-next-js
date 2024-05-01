@@ -1,6 +1,6 @@
 import { Inter } from "next/font/google";
-import React from 'react';
-import AdminSidebar from '../components/shared/admin/AdminSideBar';
+import React from "react";
+import AdminSidebar from "../components/shared/admin/AdminSideBar";
 import "../globals.css";
 const inter = Inter({ subsets: ["latin"] });
 
@@ -11,16 +11,17 @@ export const metadata = {
 
 export default function DashboardLayout({ children }) {
   return (
-    <html lang='en'>
-      <body className={inter.className} >
-        <div>
-          sidebar
-        </div>
-        <div>
-          {children}
-        </div>
-        <div>
-          footer
+    <html lang="en">
+      <body className={inter.className}>
+        <div className="w-full mx-auto relative">
+          <div className="grid grid-cols-12 overflow-hidden ">
+            <div
+              className={`col-span-3 md:block hidden bg-white z-30 sticky overflow-y-auto`}
+            >
+              <AdminSidebar />
+            </div>
+            <div className="col-span-9">{children}</div>
+          </div>
         </div>
       </body>
     </html>
