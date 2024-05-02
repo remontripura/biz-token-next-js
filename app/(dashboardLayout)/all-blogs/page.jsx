@@ -11,26 +11,26 @@ const allblogs = async () => {
     <div className="relative mx-2 h-[80vh]">
       <div className="grid grid-cols-12 gap-3">
         <div className="h-24 border col-span-4 flex flex-col justify-center items-center shadow rounded">
-          <h3 className="text-[#656565] text-[20px] font-semibold">
+          <h3 className="text-[#656565] md:text-[20px] text-[14px] font-semibold">
             Total Blog
           </h3>
-          <h3 className="text-[28px] font-semibold">{`${
+          <h3 className="md:text-[28px] text-[20px] font-semibold">{`${
             allBlogs.length < 10 ? 0 : ""
           }${allBlogs.length}`}</h3>
         </div>
         <div className="h-24 border col-span-4 flex flex-col justify-center items-center shadow rounded">
-          <h3 className="text-[#656565] text-[20px] font-semibold">
+          <h3 className="text-[#656565] md:text-[20px] text-[14px] font-semibold">
             Total Category
           </h3>
-          <h3 className="text-[28px] font-semibold">{`${
+          <h3 className="md:text-[28px] text-[20px] font-semibold">{`${
             allCategory?.length < 10 ? 0 : ""
           }${allCategory?.length}`}</h3>
         </div>
         <div className="h-24 border col-span-4 flex flex-col justify-center items-center shadow rounded">
-          <h3 className="text-[#656565] text-[20px] font-semibold">
+          <h3 className="text-[#656565] md:text-[20px] text-[14px] font-semibold">
             Total User
           </h3>
-          <h3 className="text-[28px] font-semibold">24</h3>
+          <h3 className="md:text-[28px] text-[20px] font-semibold">24</h3>
         </div>
       </div>
       <table className=" w-full border rounded-full mt-3">

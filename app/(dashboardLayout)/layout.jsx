@@ -2,6 +2,7 @@ import { Inter } from "next/font/google";
 import React from "react";
 import AdminSidebar from "../components/shared/admin/AdminSideBar";
 import "../globals.css";
+import DashboardNavbar from "../components/shared/navbar/DashboardNavbar";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
@@ -14,13 +15,14 @@ export default function DashboardLayout({ children }) {
     <html lang="en">
       <body className={inter.className}>
         <div className="w-full mx-auto relative">
+          <DashboardNavbar />
           <div className="grid grid-cols-12 overflow-hidden ">
             <div
               className={`col-span-3 md:block hidden bg-white z-30 sticky overflow-y-auto`}
             >
               <AdminSidebar />
             </div>
-            <div className="col-span-9">{children}</div>
+            <div className="md:col-span-9 col-span-12">{children}</div>
           </div>
         </div>
       </body>
