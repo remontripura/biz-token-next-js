@@ -14,7 +14,6 @@ const Page = ({ params }) => {
   const [loading, setLoading] = useState(true);
   const rowParams = params.id;
   const router = usePathname();
-  console.log(router);
   const covertParams = rowParams.replace(/%20/g, " ");
   useEffect(() => {
     axios
@@ -29,7 +28,9 @@ const Page = ({ params }) => {
         console.error("Error fetching data: ", error);
         setLoading(false);
       });
-    
+  }, []);
+  useEffect(() => {
+    scrollTo(0, 0);
   }, []);
   if (loading) {
     return (
@@ -45,7 +46,7 @@ const Page = ({ params }) => {
   }
 
   return (
-    <div className="bg-[#e3f3ff] md:pb-[80px] md:pt-[150px] pt-[100px] pb-5 ">
+    <div className="bg-[#e3f3ff] md:pb-[80px]  pt-[100px] pb-5 ">
       <Container>
         <div className="text-center md:mb-[80px] mb-10">
           <h3 className="md:text-[64px] text-[44px] font-bold text-[#323232]">
@@ -59,7 +60,7 @@ const Page = ({ params }) => {
         <div className="grid grid-cols-12 gap-5 md:mx-0 mx-2">
           {filterData?.map((dataItem, i) => (
             <Link
-              href={`/pages/news/${dataItem._id}`}
+              href={`/news/${dataItem._id}`}
               key={i}
               className="md:col-span-4 col-span-6 duration-300"
             >
@@ -70,7 +71,7 @@ const Page = ({ params }) => {
                     height={500}
                     className="w-full h-[300px] object-cover border-b-4 border-blue-800"
                     src={dataItem.imageUrl}
-                    alt=""
+                    alt="category image"
                   />
                 </div>
                 <div className="p-2">

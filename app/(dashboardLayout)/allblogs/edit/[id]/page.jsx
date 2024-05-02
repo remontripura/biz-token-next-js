@@ -222,44 +222,64 @@ import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import draftToHtml from "draftjs-to-html";
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
+import Editors from "@/app/components/_editor/Editor";
 
 const Page = ({ params }) => {
-  console.log(params);
-
-  const [blogData, setblogData] = useState([]);
+  const [blogData, setblogData] = useState({});
   const { _id, title, content } = blogData;
-  console.log(title);
   const [category, setCategory] = useState([]);
-  console.log(category);
 
-  useEffect(() => {
-    axios
-      .get("https://biz-server-git-main-remontripuras-projects.vercel.app/news")
-      .then(
-        (response) => console.log(response)
-        // setblogData(response?.data?.find((item) => item._id === params._id))
-      )
-      .catch((error) => console.log(error));
-  }, []);
+  const [initialData, setInitialData] = useState(" ");
+  const blocksFromHTML = convertFromHTML(initialData);
 
-  useEffect(() => {
-    axios
-      .get(
-        "https://biz-server-git-main-remontripuras-projects.vercel.app/category"
-      )
-      .then((response) => setCategory(response.data))
-      .catch((error) => console.log(error));
-  }, []);
-
-  const initialContent = content;
-  const blocksFromHTML = convertFromHTML(initialContent);
   const contentState = ContentState.createFromBlockArray(
     blocksFromHTML.contentBlocks,
     blocksFromHTML.entityMap
   );
+
   const [firstValue, setFirstValue] = useState(() =>
     EditorState.createWithContent(contentState)
   );
+
+  useEffect(() => {
+    fetch("https://biz-server-git-main-remontripuras-projects.vercel.app/news")
+      .then((res) => res.json())
+      .then((data) => {
+        const blogData = data.find((item) => item._id === params?.id);
+        setInitialData(blogData?.content || "");
+        setblogData(blogData || "");
+      });
+  }, [params?.id]); 
+  useEffect(() => {
+    fetch(
+      "https://biz-server-git-main-remontripuras-projects.vercel.app/category"
+    )
+      .then((res) => res.json())
+      .then((data) => {
+        setCategory(data);
+      });
+  }, []);
+
+  useEffect(() => {
+    if (initialData) {
+      const blocksFromHTML = convertFromHTML(initialData);
+      const contentState = ContentState.createFromBlockArray(
+        blocksFromHTML.contentBlocks,
+        blocksFromHTML.entityMap
+      );
+      setFirstValue(EditorState.createWithContent(contentState));
+    }
+  }, [initialData]);
+
+  // useEffect(() => {
+  //   axios
+  //     .get(
+  //       "https://biz-server-git-main-remontripuras-projects.vercel.app/category"
+  //     )
+  //     .then((response) => setCategory(response.data))
+  //     .catch((error) => console.log(error));
+  // }, []);
+
   const { register, handleSubmit } = useForm();
   const api_key = "d9fbec5bc5650a087316215838a6a574";
 
@@ -339,12 +359,12 @@ const Page = ({ params }) => {
             {...register("title")}
           />
         </div>
-        {/* <div className="flex flex-col gap-2">
+        <div className="flex flex-col gap-2">
           <label htmlFor="title" className="font-semibold">
-            Category : {category}
+            {/* Category : {category} */}
           </label>
           <select
-            {...register("category")}
+            {...register("category", { required: true })}
             className="w-1/2  px-2 py-2  rounded border border-slate-300  focus:outline focus:outline-slate-400"
           >
             {" "}
@@ -354,7 +374,7 @@ const Page = ({ params }) => {
               </option>
             ))}
           </select>
-        </div> */}
+        </div>
 
         <div className="my-10 col-lg-12 col-md-12">
           <Editor

@@ -57,9 +57,8 @@ const allblogs = async () => {
               </td>
               <td className=" text-start w-4/12 p-2">
                 {" "}
-                {`${data?.title?.slice(0, 20)}${
-                  data?.title?.length > 20 ? "..." : ""
-                }`}
+                {`${data?.title?.slice(0, 20)}${data?.title?.length > 20 ? "..." : ""
+                  }`}
               </td>
               <td className=" text-center w-3/12 space-x-3 p-2">
                 <ActionButton data={data} />

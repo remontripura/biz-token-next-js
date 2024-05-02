@@ -14,7 +14,6 @@ const BlogPost = () => {
   const api_key = "d9fbec5bc5650a087316215838a6a574";
   const [categoryy, setCategory] = useState([]);
 
-
   const { register, handleSubmit, reset } = useForm();
   const onSubmit = async (data) => {
     console.log(data);
@@ -114,12 +113,12 @@ const BlogPost = () => {
             Category
           </label>
           <select
-            {...register("category")}
+            {...register("category", { required: true })}
             className="w-1/2  px-2 py-2  rounded border border-slate-300  focus:outline focus:outline-slate-400"
           >
             {" "}
             {categoryy?.map((category) => (
-              <option key={category._id} defaultValue={category.categoryName}>
+              <option key={category._id} Value={category.categoryName}>
                 {category.categoryName}
               </option>
             ))}
