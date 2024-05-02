@@ -36,26 +36,20 @@ const News = ({ params }) => {
         console.error("Error fetching data: ", error);
         setLoading(false);
       });
-
+  
   }, []);
   useEffect(() => {
-    axios
-      .get("https://biz-server-git-main-remontripuras-projects.vercel.app/news")
-      .then((response) => {
-        setData(response.data);
-        const filterData = response.data?.find(
-          (item) => item._id == params._id
-        );
-        setFilterData(filterData);
-        setLoading(false);
-      })
-      .catch((error) => {
-        console.error("Error fetching data: ", error);
-        setLoading(false);
+    fetch("https://biz-server-git-main-remontripuras-projects.vercel.app/news")
+      .then((res) => res.json())
+      .then((data) => {
+        setData(data);
+        setFilterData(data.find((item) => item._id === params?.id));
       });
-    
-  }, []);
+  }, [params?.id]);
 
+  useEffect(() => {
+    scrollTo(0, 0);
+  }, []);
 
   const reversedData = data && Array.isArray(data) ? [...data].reverse() : [];
 
@@ -104,8 +98,8 @@ const News = ({ params }) => {
             <Image
               width={500}
               height={500}
+              src={filterData?.imageUrl}
               className="md:h-[500px] h-[300px] object-cover w-full rounded-3xl"
-              src={filterData.imageUrl}
               alt=""
             />
             <p className="flex items-center gap-5 mt-10 mb-[60px]">
@@ -117,19 +111,19 @@ const News = ({ params }) => {
                 alt=""
               />
               <span className="text-[20px] text-[#787878]">
-                {`${filterData.date?.date} ${filterData.date?.monthName} ${filterData.date?.year}  `}
+                {`${filterData?.date?.date} ${filterData?.date?.monthName} ${filterData?.date?.year}  `}
               </span>{" "}
               <span className="font-medium text-[20px] text-[#787878] ml-3">
                 2.18 PM
               </span>{" "}
             </p>
             <h3 className="font-bold text-[48px] text-[#242424] mb-3">
-              {filterData.title}
+              {filterData?.title}
             </h3>
             <div
               className="bg-none"
               dangerouslySetInnerHTML={{
-                __html: filterData.content,
+                __html: filterData?.content,
               }}
             ></div>
 
@@ -197,7 +191,7 @@ const News = ({ params }) => {
               <ul className="space-y-3 p-1">
                 {category?.map((item) => (
                   <Link
-                    href={`/pages/category/${item._id}`}
+                    href={`/category/${item._id}`}
                     key={item._id}
                     className="w-full bg-[#fff] rounded-full pl-3 pr-1 py-1 flex justify-between"
                   >
@@ -325,7 +319,7 @@ const News = ({ params }) => {
                   src={data.imageUrl}
                   alt=""
                 />
-                <Link href={`/pages/news/${data?._id}`}>
+                <Link href={`/news/${data?._id}`}>
                   <p className="mt-4 hover:text-blue-600 duration-300">
                     {data.title}
                   </p>

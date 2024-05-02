@@ -1,37 +1,31 @@
 "use client";
 
-import icon from "@/public/icon/logo.png";
 import Image from "next/image";
 import Link from "next/link";
+import icon from "@/public/icon/logo.png";
+import { usePathname } from "next/navigation";
 
 const menuItem = [
   {
     title: "All blog",
-    pathname: "all-blog",
+    pathname: "all-blogs",
   },
   {
-    title: "Add-Blog",
+    title: "Blog Post",
     pathname: "blog-post",
   },
   {
-    title: "Add-Category",
-    pathname: "add-category",
+    title: "Category Post",
+    pathname: "category-post",
   },
 ];
 
-const AdminSidebar = () => {
-  useEffect(() => {
-    setShow(false);
-  }, [location.pathname]);
+const AdminSideBar = () => {
   const pathname = usePathname();
-  const activeNav = menuItem.find(
-    (item) => `/pages/bloogs/bloogPost/${item.pathname}` == pathname
-  );
-
 
   return (
     <aside
-      className={`bg-[#2F76DE] h-screen sticky col-span-3 top-0 overflow-auto`}
+      className={`bg-[#2F76DE] h-screen sticky col-span-3 top-0 overflow-auto shadow-lg`}
     >
       <div className="flex justify-end">
         <svg
@@ -56,19 +50,23 @@ const AdminSidebar = () => {
           <Image src={icon} alt="image" />
         </Link>
       </div>
-      {/* <ul className="flex flex-col ">
+      <ul className="flex flex-col ">
         {menuItem.map((item, i) => (
-          <li key={i} className="bg-white border-b py-3 px-5">
-            <Link href={`/pages/bloogs/bloogPost/${item.pathname}`}>
-              {" "}
+          <Link key={i} href={`/${item.pathname}`} className="cursor-pointer">
+            <li
+              className={`${
+                `/${item.pathname}` == pathname
+                  ? "bg-white"
+                  : ""
+              } border-b py-3 px-5 w-full`}
+            >
               {item.title}
-            </Link>
-          </li>
+            </li>
+          </Link>
         ))}
-      </ul> */}
-
+      </ul>
     </aside>
   );
 };
 
-export default AdminSidebar;
+export default AdminSideBar;

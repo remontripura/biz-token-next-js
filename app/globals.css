@@ -47,3 +47,34 @@
   margin: auto;
   border-radius: 50%;
 }
+
+
+
+/* navbar style */
+
+.btn {
+  position: relative;
+  background-color: transparent;
+  transition-duration: 1000ms;
+  transition-timing-function: ease;
+  overflow: hidden;
+}
+
+.btn::after {
+  content: "";
+  height: 100%;
+  width: 100%;
+  border-bottom: 3px solid white;
+  margin-top: 1px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transition-property: all;
+  transition-duration: 1000ms;
+  transition-timing-function: ease;
+  transform: translate(-100px);
+  z-index: -1px;
+}
+.btn:hover::after {
+  transform: translate(0);
+}

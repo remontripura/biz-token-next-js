@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-// import icon from "../../../public/icon/logo.png";
 import icon from "@/public/icon/logo.png";
 import { IoMdMenu, IoIosClose } from "react-icons/io";
 import Container from "@/app/_container/Container";
@@ -10,45 +9,26 @@ import Image from "next/image";
 
 const NavItem1 = (
   <>
-    <Link href="/" className="text-[#000] font-medium  hover:text-[#FFFFFF]">
+    <Link
+      href="/"
+      className="text-[#000] font-medium  hover:text-[#FFFFFF] btn"
+    >
       Home
     </Link>
     <Link
       href="/blogs"
-      className="text-[#000] font-medium  hover:text-[#FFFFFF]"
+      className="text-[#000] font-medium  hover:text-[#FFFFFF] btn"
     >
       Blog
     </Link>
     <Link
       href="/free-biz"
-      className="text-[#000] font-medium  hover:text-[#FFFFFF]"
+      className="text-[#000] font-medium  hover:text-[#FFFFFF] btn"
     >
       Free Biz
     </Link>
   </>
 );
-// const NavItem2 = (
-//   <>
-//     <Link href="/" className="text-[#000] hover:text-blue-600 ">
-//       Home
-//     </Link>
-//     <Link href="/Developers" className="text-[#000] hover:text-blue-600 ">
-//       Developers
-//     </Link>
-//     <Link href="/ecosystem" className="text-[#000] hover:text-blue-600 ">
-//       Ecosystem
-//     </Link>
-//     <Link href="/commiunity" className="text-[#000] hover:text-blue-600 ">
-//       Community
-//     </Link>
-//     <Link href="/blog" className="text-[#000] hover:text-blue-600 ">
-//       Blog
-//     </Link>
-//     <Link href="/free-biz-home" className="text-[#000] hover:text-blue-600 ">
-//       Free-Biz
-//     </Link>
-//   </>
-// );
 
 const Navbar = ({ scroll, setScroll }) => {
   const [menu, setMenu] = useState(false);
@@ -59,23 +39,24 @@ const Navbar = ({ scroll, setScroll }) => {
   };
   const [isScrolled, setIsScrolled] = useState(false);
 
-  // useEffect(() => {
-  //   const handleScroll = () => {
-  //     setIsScrolled(window.scrollY > 30);
-  //   };
-  //   window.addEventListener("scroll", handleScroll);
-  //   return () => window.removeEventListener("scroll", handleScroll);
-  // }, []);
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 30);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   // useEffect(() => {
   //   setMenu(false);
   // }, [location.pathname]);
   return (
     <div
-      className={`${isScrolled == true
-        ? "bg-[#2F76DE] duration-500 py-2"
-        : "transition-all duration-500 py-3 bg-[#2F76DE]"
-        } w-full z-[99] fixed`}
+      className={`${
+        isScrolled == true
+          ? "bg-[#2F76DE] duration-500 py-2"
+          : "transition-all duration-500 py-3 bg-[#2F76DE]"
+      } w-full z-[99] fixed`}
     >
       <Container>
         <div className="px-3 flex items-center justify-between relative ">
@@ -88,10 +69,11 @@ const Navbar = ({ scroll, setScroll }) => {
             />
           </Link>
           <div
-            className={`flex flex-col items-center gap-5 bg-[#fff] absolute  right-0 left-0 md:hidden ${menu
-              ? "top-12 py-8 transition-all  duration-300 ease-in "
-              : "-top-96  transition-all duration-300 ease-in"
-              }`}
+            className={`flex flex-col items-center gap-5 bg-[#fff] absolute  right-0 left-0 md:hidden ${
+              menu
+                ? "top-12 py-8 transition-all  duration-300 ease-in "
+                : "-top-96  transition-all duration-300 ease-in"
+            }`}
           >
             <div className="w-full flex justify-end">
               <button
@@ -126,7 +108,7 @@ const Navbar = ({ scroll, setScroll }) => {
           </div>
           <div className="md:block hidden">
             <div className=" flex justify-center">
-              <Link href="/dashboard/dashboard-home">
+              <Link href="/dashboard">
                 <button className="text-[#303030] py-3 px-8 bg-[#F3FAFF] rounded-lg">
                   Start Building
                 </button>
