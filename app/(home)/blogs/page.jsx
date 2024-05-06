@@ -1,4 +1,3 @@
-
 "use client";
 
 import React, { useEffect, useState } from "react";
@@ -57,6 +56,9 @@ const Blogs = () => {
 
   return (
     <div className="bg-[#e3f3ff] md:pb-[80px] pt-[100px] pb-5 ">
+      <head>
+       
+      </head>
       <Container>
         <div className="text-center md:mb-[80px] mb-10">
           <h3 className="md:text-[64px] text-[44px] font-bold text-[#323232]">

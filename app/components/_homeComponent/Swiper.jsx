@@ -52,7 +52,7 @@ const SwiperComponent = ({allBlogs}) => {
               <SwiperSlide key={item._id}>
                 <div className={`h-[411px] relative md:mt-0  mr-3 mb-10`}>
                   <div to={`news/${item?._id}`}>
-                    <Link href={`pages/news/${item?._id}`}>
+                    <Link href={`/news/${item?._id}`}>
                       <Image
                         style={{
                           width: "100%",

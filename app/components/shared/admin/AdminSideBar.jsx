@@ -25,7 +25,7 @@ const AdminSideBar = () => {
 
   return (
     <aside
-      className={`bg-[#2F76DE] h-screen sticky col-span-3 top-0 overflow-auto shadow-lg`}
+      className={`bg-[#2F76DE] h-screen fixed col-span-3 top-0 overflow-auto shadow-lg w-1/4`}
     >
       <div className="flex justify-end">
         <svg

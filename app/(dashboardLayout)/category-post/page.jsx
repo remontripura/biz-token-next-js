@@ -7,8 +7,6 @@ import Swal from "sweetalert2";
 
 const Category = () => {
   const [category, setCategory] = useState([]);
-
-
   const { register, handleSubmit, reset } = useForm();
   const onSubmit = async (data) => {
     try {

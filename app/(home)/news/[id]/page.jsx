@@ -36,7 +36,6 @@ const News = ({ params }) => {
         console.error("Error fetching data: ", error);
         setLoading(false);
       });
-  
   }, []);
   useEffect(() => {
     fetch("https://biz-server-git-main-remontripuras-projects.vercel.app/news")
@@ -226,7 +225,7 @@ const News = ({ params }) => {
                       <p className="text-[12px] text-[#8B8B8B]">
                         Biz Ecosystem
                       </p>
-                      <Link href={`/pages/news/${data?._id}`}>
+                      <Link href={`/news/${data?._id}`}>
                         <p className="text-[#242424] font-medium text-[14px]">
                           {data.title}
                         </p>

@@ -224,7 +224,7 @@ import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
 import Editors from "@/app/components/_editor/Editor";
 
-const Page = ({ params }) => {
+const Edit = ({ params }) => {
   const [blogData, setblogData] = useState({});
   const { _id, title, content } = blogData;
   const [category, setCategory] = useState([]);
@@ -249,7 +249,7 @@ const Page = ({ params }) => {
         setInitialData(blogData?.content || "");
         setblogData(blogData || "");
       });
-  }, [params?.id]); 
+  }, [params?.id]);
   useEffect(() => {
     fetch(
       "https://biz-server-git-main-remontripuras-projects.vercel.app/category"
@@ -356,7 +356,7 @@ const Page = ({ params }) => {
             className="w-full  px-2 py-2  rounded border border-slate-300  focus:outline focus:outline-slate-400"
             defaultValue={title}
             id="title"
-            {...register("title")}
+            {...register("title", { required: true })}
           />
         </div>
         <div className="flex flex-col gap-2">
@@ -439,4 +439,4 @@ const Page = ({ params }) => {
   );
 };
 
-export default Page;
+export default Edit;
